@@ -102,4 +102,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 ---
 
-**Note**: The web version of Deep Dork provides a streamlined and accessible alternative to the Python CLI tool. It eliminates the need for users to manage dependencies or run scripts locally, making it suitable for beginners and professionals alike while maintaining the core functionality of the original tool. Simply visit [https://diogo-lages.github.io/Deep-Dork-Web/](https://diogo-lages.github.io/Deep-Dork-Web/)
+**Note**: The web version of Deep Dork provides a streamlined and accessible alternative to the Python CLI tool. It eliminates the need for users to manage dependencies or run scripts locally, making it suitable for beginners and professionals alike while maintaining the core functionality of the original tool.
