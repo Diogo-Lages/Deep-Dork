@@ -1,83 +1,105 @@
-# Deep-Dork
-
----
+# Deep Dork Web
 
 ## Description
+Deep Dork Web is a modern, browser-based tool designed to simplify and automate Google Dork searches for ethical security research. This web version provides an intuitive interface for performing advanced queries, filtering dorks by category, and seamlessly integrating with search engines like Google.
 
-Deep Dork is a Python-based tool designed to automate Google Dork searches, validate proxies, bypass CAPTCHAs, and export results for further analysis.
-
----
-
-## Requirements
-
-Before running the tool, ensure you have the following libraries installed:
-
-- `requests`
-- `beautifulsoup4`
-- `selenium`
-- `fake-useragent`
-- `colorama`
-
-You can install these libraries using pip:
-
-```bash
-pip install requests beautifulsoup4 selenium fake-useragent colorama
-```
-
-Additionally, you need to have [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/) installed and available in your system's PATH for Selenium to work correctly.
+The tool is ideal for educational purposes, allowing users to explore predefined or custom Google Dorks without needing to manage dependencies or run scripts locally. It also includes features like real-time search filtering, dynamic query generation, and direct links to search results.
 
 ---
 
 ## Features
-
 - **Advanced Google Dork Search**: Perform targeted searches using predefined or custom Google Dorks.
-- **Proxy Management**: Load, validate, and test proxies from files or manual input to ensure anonymity and avoid IP bans.
-- **CAPTCHA Bypass**: Use Selenium or third-party CAPTCHA-solving services (e.g., 2Captcha) to handle CAPTCHA challenges.
-- **Multi-threaded Proxy Validation**: Efficiently validate proxies in parallel to improve performance.
-- **Search History**: Automatically save and manage search history for future reference.
-- **Export Results**: Export search results in JSON or CSV formats for further analysis.
-- **User-friendly Menu Interface**: Navigate through options effortlessly via an interactive CLI menu.
-- **Customizable User-Agent**: Randomize user-agent headers to mimic different browsers and devices.
-- **Error Handling**: Built-in mechanisms to handle timeouts, proxy errors, and other exceptions gracefully.
+- **Dynamic Query Generation**: Replace placeholders (e.g., `{nome}`) in dork queries with user-provided input for personalized searches.
+- **Category Filtering**: Filter dorks by categories such as "sensitive data," "vulnerabilities," or "misconfigurations."
+- **Real-Time Search Results**: Instantly filter and display relevant dorks based on your search terms.
+- **Search Engine Integration**: Generate direct links to Google search results for selected dorks.
+- **Responsive Design**: A sleek, modern UI that works seamlessly on both desktop and mobile devices.
+- **Educational Focus**: Includes a clear disclaimer emphasizing ethical use and legal considerations.
 
 ---
 
 ## Usage
+### Accessing the Tool
+1. Visit the hosted version of Deep Dork Web at [https://diogo-lages.github.io/Deep-Dork-Web/](https://diogo-lages.github.io/Deep-Dork-Web/).
+2. No installation or setup is required—simply open the link in your browser to start using the tool.
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/Diogo-Lages/deep-dork.git
-   cd deep-dork
-   ```
+### Performing Searches
+1. **Enter a Search Term**:
+   - Use the search bar to input keywords or phrases related to your query.
+   - The tool will dynamically filter dorks based on your input.
 
-2. **Install Dependencies**:
-   ```bash
-   pip install requests beautifulsoup4 selenium fake-useragent colorama
-   ```
+2. **Filter by Category**:
+   - Use the dropdown menu to narrow down results by category (e.g., "sensitive data" or "vulnerabilities").
+   - Select "All categories" to view all available dorks.
 
-3. **Run the Tool**:
-   ```bash
-   python deepdork.py
-   ```
+3. **View Results**:
+   - Matching dorks will appear below the search bar, displaying their query, category, and description.
+   - Click on a dork to generate direct links to search engines like Google.
 
-4. **Follow the On-Screen Menu**:
-   - **Advanced Search**: Perform targeted searches using predefined or custom Google Dorks.
-   - **Run All Dorks Automatically**: Execute all predefined Dorks sequentially.
-   - **Configure Proxies**: Load and validate proxies manually or from a file.
-   - **View History**: Display past search queries and their results.
-   - **Export Results**: Save search results in JSON or CSV format.
-   - **Test Proxies**: Validate the functionality of configured proxies.
-   - **Solve CAPTCHA with Third-Party Service**: Use external services like 2Captcha to solve CAPTCHAs.
-   - **Exit**: Save history and exit the program.
+4. **Search with Generated Links**:
+   - After selecting a dork, click on the generated link (e.g., "Google") to open the search results in a new tab.
 
 ---
 
 ## Ethical Considerations
+This tool is intended for **educational purposes only**. Misuse of Google Dorking techniques may violate terms of service and legal regulations in some jurisdictions. Always ensure you have explicit permission before conducting reconnaissance or testing on any system.
 
-This tool is intended for **ethical use only**. Unauthorized use of Google Dorks or any form of web scraping may violate terms of service and legal regulations. Always ensure you have explicit permission before conducting reconnaissance or testing on any system.
+A clear disclaimer is included at the top of the interface to remind users of the ethical implications of using this tool.
+
+---
+
+## File Structure
+The project consists of the following files:
+- **`index.html`**: The main HTML file containing the structure and styling of the web interface.
+- **`dorks.json`**: A JSON file containing predefined Google Dorks categorized by type. Each entry includes:
+  - `query`: The Google Dork query (with optional placeholders like `{nome}`).
+  - `category`: The category of the dork (e.g., "sensitive data").
+  - `description`: A brief explanation of the dork's purpose.
+- **`assets/`** (optional): Folder for additional assets like images or icons (not included in the current version).
+
+---
+
+## Customization
+### Adding New Dorks
+To add new dorks to the tool:
+1. Fork the repository from [GitHub](https://github.com/Diogo-Lages/Deep-Dork-Web).
+2. Open the `dorks.json` file in the forked repository.
+3. Add a new entry in the following format:
+   ```json
+   {
+     "query": "site:example.com filetype:pdf {nome}",
+     "category": "sensitive data",
+     "description": "Searches for PDF files containing the specified keyword on example.com."
+   }
+   ```
+4. Save the file and deploy your forked version using GitHub Pages or another hosting service.
+
+### Modifying the Interface
+- **Styling**: Customize the CSS in the `<style>` section of `index.html` to change colors, fonts, or animations.
+- **Search Engines**: Add more search engines by modifying the `searchEngines` array in the JavaScript code:
+  ```javascript
+  const searchEngines = [
+    { name: 'Google', url: 'https://www.google.com/search?q=' },
+    { name: 'Bing', url: 'https://www.bing.com/search?q=' },
+    { name: 'DuckDuckGo', url: 'https://duckduckgo.com/?q=' }
+  ];
+  ```
+
+---
+
+## Hosting Options
+The tool is already hosted on GitHub Pages for public access. You can use it directly at [https://diogo-lages.github.io/Deep-Dork-Web/](https://diogo-lages.github.io/Deep-Dork-Web/).
+
+If you'd like to host your own version:
+1. Fork the repository from [GitHub](https://github.com/Diogo-Lages/Deep-Dork-Web).
+2. Enable GitHub Pages in your forked repository settings.
+3. Share the hosted URL with others.
 
 ---
 
 ## License
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+---
+
+**Note**: The web version of Deep Dork provides a streamlined and accessible alternative to the Python CLI tool. It eliminates the need for users to manage dependencies or run scripts locally, making it suitable for beginners and professionals alike while maintaining the core functionality of the original tool. Simply visit [https://diogo-lages.github.io/Deep-Dork-Web/](https://diogo-lages.github.io/Deep-Dork-Web/)
