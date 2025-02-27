@@ -80,4 +80,4 @@ This tool is intended for **ethical use only**. Unauthorized use of Google Dorks
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
