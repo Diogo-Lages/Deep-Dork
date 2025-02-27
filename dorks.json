@@ -1,0 +1,1979 @@
+[
+    {
+        "name": "Subdomain Enumeration",
+        "dork": "site:*.{nome}",
+        "description": "Finds subdomains of the target domain."
+    },
+    {
+        "name": "Exposed robots.txt",
+        "dork": "site:{nome} inurl:/robots.txt",
+        "description": "Finds the robots.txt file of the target domain."
+    },
+    {
+        "name": "Exposed Configuration Files",
+        "dork": "site:{nome} filetype:ini OR filetype:conf OR filetype:env",
+        "description": "Finds configuration files that may expose sensitive data."
+    },
+    {
+        "name": "SQL Errors",
+        "dork": "site:{nome} intext:'SQL syntax' OR intext:'MySQL error'",
+        "description": "Finds SQL error messages exposed on web pages."
+    },
+    {
+        "name": "Open Redirects",
+        "dork": "site:{nome} inurl:url=http OR inurl:redirect=",
+        "description": "Finds potential open redirect vulnerabilities."
+    },
+    {
+        "name": "Exposed AWS Keys",
+        "dork": "site:{nome} intext:'AWS_ACCESS_KEY_ID' OR intext:'AWS_SECRET_ACCESS_KEY'",
+        "description": "Finds exposed AWS keys."
+    },
+    {
+        "name": "Exposed .git Directories",
+        "dork": "intitle:'Index of /.git' site:{nome}",
+        "description": "Finds exposed .git directories."
+    },
+    {
+        "name": "Exposed S3 Buckets",
+        "dork": "site:s3.amazonaws.com intext:'NoSuchBucket'",
+        "description": "Finds exposed S3 buckets."
+    },
+    {
+        "name": "Exposed API Endpoints",
+        "dork": "site:{nome} inurl:/api OR inurl:/v1 OR inurl:/v2",
+        "description": "Finds exposed API endpoints."
+    },
+    {
+        "name": "Debugging Information",
+        "dork": "site:{nome} intext:'debug' OR intext:'trace'",
+        "description": "Finds pages exposing debugging or tracing information."
+    },
+    {
+        "name": "Admin Panels",
+        "dork": "site:{nome} inurl:/admin OR inurl:/dashboard",
+        "description": "Finds admin panels or dashboards."
+    },
+    {
+        "name": "WordPress Plugins",
+        "dork": "site:{nome} inurl:/wp-content/plugins/",
+        "description": "Finds WordPress plugins that may have known vulnerabilities."
+    },
+    {
+        "name": "WordPress Themes",
+        "dork": "site:{nome} inurl:/wp-content/themes/",
+        "description": "Finds WordPress themes that may have known vulnerabilities."
+    },
+    {
+        "name": "Backup Files",
+        "dork": "site:{nome} filetype:bak OR filetype:bkf OR filetype:old",
+        "description": "Finds backup files that may contain sensitive data."
+    },
+    {
+        "name": "Exposed Log Files",
+        "dork": "site:{nome} filetype:log OR intitle:'access.log'",
+        "description": "Finds publicly accessible log files."
+    },
+    {
+        "name": "Database Files",
+        "dork": "site:{nome} filetype:sql OR filetype:db",
+        "description": "Finds exposed database files."
+    },
+    {
+        "name": "Dockerfiles",
+        "dork": "site:{nome} filetype:Dockerfile",
+        "description": "Finds exposed Dockerfiles."
+    },
+    {
+        "name": "Kubernetes Configs",
+        "dork": "site:{nome} filetype:yaml intext:'kind: Pod'",
+        "description": "Finds exposed Kubernetes configurations."
+    },
+    {
+        "name": "Terraform Files",
+        "dork": "site:{nome} filetype:tf",
+        "description": "Finds exposed Terraform files."
+    },
+    {
+        "name": "Nginx Configs",
+        "dork": "site:{nome} filetype:conf intext:'nginx'",
+        "description": "Finds exposed Nginx configurations."
+    },
+    {
+        "name": "Apache Configs",
+        "dork": "site:{nome} filetype:conf intext:'apache'",
+        "description": "Finds exposed Apache configurations."
+    },
+    {
+        "name": "PHP Info Pages",
+        "dork": "site:{nome} intitle:'PHP Version'",
+        "description": "Finds exposed PHP info pages."
+    },
+    {
+        "name": "Exposed Firebase Configs",
+        "dork": "site:{nome} intext:'firebaseio.com' OR intext:'apiKey'",
+        "description": "Finds exposed Firebase configurations."
+    },
+    {
+        "name": "SSH Keys",
+        "dork": "site:{nome} intext:'BEGIN RSA PRIVATE KEY' OR intext:'BEGIN OPENSSH PRIVATE KEY'",
+        "description": "Finds exposed SSH keys."
+    },
+    {
+        "name": "API Keys",
+        "dork": "site:{nome} intext:'API_KEY' OR intext:'api_key'",
+        "description": "Finds API keys exposed on web pages."
+    },
+    {
+        "name": "Directory Listing",
+        "dork": "site:{nome} intitle:'Index of /'",
+        "description": "Finds directories with listing enabled."
+    },
+    {
+        "name": "Vulnerable PHP Files",
+        "dork": "site:{nome} filetype:php intext:'error'",
+        "description": "Finds potentially vulnerable PHP files."
+    },
+    {
+        "name": "Vulnerable ASP/ASPX Files",
+        "dork": "site:{nome} filetype:asp OR filetype:aspx intext:'error'",
+        "description": "Finds potentially vulnerable ASP/ASPX files."
+    },
+    {
+        "name": "Apache STRUTS RCE",
+        "dork": "site:{nome} intext:'Apache Struts' AND intext:'error'",
+        "description": "Finds Apache Struts-related remote code execution vulnerabilities."
+    },
+    {
+        "name": "Exposed Webcams",
+        "dork": "inurl:'view/index.shtml' site:{nome}",
+        "description": "Finds exposed webcam interfaces."
+    },
+    {
+        "name": "AXIS Live View",
+        "dork": "intitle:'Live View /-AXIS' site:{nome}",
+        "description": "Finds AXIS camera live views."
+    },
+    {
+        "name": "Network Camera",
+        "dork": "intitle:'Network Camera NetworkCamera' site:{nome}",
+        "description": "Finds network camera interfaces."
+    },
+    {
+        "name": "Exposed Printers",
+        "dork": "intitle:'Printer Status' OR intitle:'Printer Configuration' site:{nome}",
+        "description": "Finds exposed printers."
+    },
+    {
+        "name": "Exposed VoIP Systems",
+        "dork": "intitle:'VoIP Configuration' OR intitle:'VoIP Login' site:{nome}",
+        "description": "Finds exposed VoIP systems."
+    },
+    {
+        "name": "Exposed SCADA Systems",
+        "dork": "intitle:'SCADA' OR intitle:'Industrial Control System' site:{nome}",
+        "description": "Finds exposed SCADA systems."
+    },
+    {
+        "name": "Exposed Medical Devices",
+        "dork": "intitle:'Medical Device' OR intitle:'Patient Monitor' site:{nome}",
+        "description": "Finds exposed medical devices."
+    },
+    {
+        "name": "Email Addresses",
+        "dork": "site:{nome} intext:'@' AND intext:'.com'",
+        "description": "Finds email addresses exposed on web pages."
+    },
+    {
+        "name": "Confidential PDFs",
+        "dork": "filetype:pdf intitle:'Confidential' site:{nome}",
+        "description": "Finds confidential PDF files."
+    },
+    {
+        "name": "Confidential DOCs",
+        "dork": "filetype:doc intitle:'Confidential' site:{nome}",
+        "description": "Finds confidential DOC files."
+    },
+    {
+        "name": "Confidential XLSs",
+        "dork": "filetype:xls intitle:'Confidential' site:{nome}",
+        "description": "Finds confidential XLS files."
+    },
+    {
+        "name": "Confidential PPTs",
+        "dork": "filetype:ppt intitle:'Confidential' site:{nome}",
+        "description": "Finds confidential PPT files."
+    },
+    {
+        "name": "Pastebin Entries",
+        "dork": "site:pastebin.com {nome}",
+        "description": "Finds Pastebin entries related to the target."
+    },
+    {
+        "name": "Employees on LinkedIn",
+        "dork": "site:linkedin.com employees {nome}",
+        "description": "Finds employees of the target organization on LinkedIn."
+    },
+    {
+        "name": "Wayback Machine Snapshots",
+        "dork": "site:web.archive.org inurl:{nome}",
+        "description": "Finds snapshots of the target in the Wayback Machine."
+    },
+    {
+        "name": "Exposed .svn Directories",
+        "dork": "intitle:'Index of /.svn' site:{nome}",
+        "description": "Finds exposed .svn directories."
+    },
+    {
+        "name": "Exposed Cross-Domain Policies",
+        "dork": "site:{nome} inurl:/crossdomain.xml",
+        "description": "Finds cross-domain policy files."
+    },
+    {
+        "name": "Exposed Smart TVs",
+        "dork": "intitle:'Smart TV' OR intitle:'TV Settings' site:{nome}",
+        "description": "Finds exposed smart TVs."
+    },
+    {
+        "name": "Exposed IoT Devices",
+        "dork": "inurl:'/cgi-bin/luci' OR inurl:'/cgi-bin/status'",
+        "description": "Finds exposed IoT devices."
+    },
+    {
+        "name": "Exposed FTP Servers",
+        "dork": "intitle:'FTP Server' OR intitle:'FTP Home' site:{nome}",
+        "description": "Finds exposed FTP servers."
+    },
+    {
+        "name": "Exposed Telnet Services",
+        "dork": "intitle:'Telnet Server' site:{nome}",
+        "description": "Finds exposed Telnet services."
+    },
+    {
+        "name": "Exposed RDP Services",
+        "dork": "intitle:'Remote Desktop Web Connection' site:{nome}",
+        "description": "Finds exposed RDP services."
+    },
+    {
+        "name": "Exposed VNC Servers",
+        "dork": "intitle:'VNC Viewer' OR intitle:'VNC Server' site:{nome}",
+        "description": "Finds exposed VNC servers."
+    },
+    {
+        "name": "Error Messages",
+        "dork": "site:{nome} intext:'error' OR intext:'exception'",
+        "description": "Finds error messages exposed on web pages."
+    },
+    {
+        "name": "Server Misconfigurations",
+        "dork": "site:{nome} intext:'server at risk' OR intext:'misconfiguration'",
+        "description": "Finds servers with known risks or misconfigurations."
+    },
+    {
+        "name": "Web Server Detection",
+        "dork": "site:{nome} intext:'Apache' OR intext:'nginx' OR intext:'IIS'",
+        "description": "Detects the type of web server being used."
+    },
+    {
+        "name": "Advisories and Vulnerabilities",
+        "dork": "site:{nome} intext:'vulnerability' OR intext:'advisory'",
+        "description": "Finds pages related to security advisories or vulnerabilities."
+    },
+    {
+        "name": "Files Containing Juicy Info",
+        "dork": "site:{nome} filetype:txt OR filetype:csv OR filetype:xls",
+        "description": "Finds text, CSV, or Excel files that may contain sensitive information."
+    },
+    {
+        "name": "Files Containing Passwords",
+        "dork": "site:{nome} intext:'password' OR intext:'credentials' filetype:txt OR filetype:docx",
+        "description": "Finds files that may contain passwords or credentials."
+    },
+    {
+        "name": "Files Containing Usernames",
+        "dork": "site:{nome} intext:'username' OR intext:'user' filetype:txt OR filetype:csv",
+        "description": "Finds files that may contain usernames."
+    },
+    {
+        "name": "Footholds",
+        "dork": "site:{nome} intitle:'admin' OR intitle:'login' OR intitle:'dashboard'",
+        "description": "Finds potential entry points like admin panels or dashboards."
+    },
+    {
+        "name": "Network or Vulnerability Data",
+        "dork": "site:{nome} intext:'IP address' OR intext:'network' OR intext:'vulnerability'",
+        "description": "Finds pages exposing network or vulnerability-related data."
+    },
+    {
+        "name": "Sensitive Online Shopping Info",
+        "dork": "site:{nome} intext:'credit card' OR intext:'payment' OR intext:'transaction'",
+        "description": "Finds pages exposing shopping-related sensitive information."
+    },
+    {
+        "name": "Various Online Devices",
+        "dork": "inurl:view/view.shtml OR inurl:cam OR inurl:camera",
+        "description": "Finds online devices like cameras or IoT devices."
+    },
+    {
+        "name": "Install/Setup Files",
+        "dork": "site:{nome} inurl:install OR inurl:setup",
+        "description": "Finds installation or setup files."
+    },
+    {
+        "name": "Finding Backdoors",
+        "dork": "site:{nome} intext:'backdoor' OR intext:'shell'",
+        "description": "Finds potential backdoors or shells."
+    },
+    {
+        "name": "Search in GitHub",
+        "dork": "site:github.com {nome}",
+        "description": "Searches for repositories or files related to the target on GitHub."
+    },
+    {
+        "name": "Search in OpenBugBounty",
+        "dork": "site:openbugbounty.org {nome}",
+        "description": "Finds bug bounty reports related to the target."
+    },
+    {
+        "name": "Search in Reddit",
+        "dork": "site:reddit.com {nome}",
+        "description": "Finds discussions about the target on Reddit."
+    },
+    {
+        "name": "Check in ThreatCrowd",
+        "dork": "site:threatcrowd.org {nome}",
+        "description": "Finds threat intelligence related to the target."
+    },
+    {
+        "name": "Find .SWF File (Google)",
+        "dork": "site:{nome} filetype:swf",
+        "description": "Finds exposed SWF files using Google."
+    },
+    {
+        "name": "Search SWF in WayBack Machine",
+        "dork": "site:web.archive.org inurl:{nome} swf",
+        "description": "Finds SWF files via the Wayback Machine."
+    },
+    {
+        "name": "Check in crt.sh",
+        "dork": "site:crt.sh {nome}",
+        "description": "Finds SSL/TLS certificates related to the target."
+    },
+    {
+        "name": "Check in CENSYS [IP4] | [DOMAINS] | [CERTS]",
+        "dork": "site:censys.io {nome}",
+        "description": "Searches for IP addresses, domains, or certificates related to the target."
+    },
+    {
+        "name": "Search in SHODAN",
+        "dork": "site:shodan.io {nome}",
+        "description": "Finds exposed services or devices related to the target."
+    },
+    {
+        "name": "Search in HackerOne",
+        "dork": "site:hackerone.com {nome}",
+        "description": "Finds bug bounty programs related to the target."
+    },
+    {
+        "name": "Search in Bugcrowd",
+        "dork": "site:bugcrowd.com {nome}",
+        "description": "Finds bug bounty programs related to the target."
+    },
+    {
+        "name": "Search in Intigriti",
+        "dork": "site:intigriti.com {nome}",
+        "description": "Finds bug bounty programs related to the target."
+    },
+    {
+        "name": "Search in Exploit-DB",
+        "dork": "site:exploit-db.com {nome}",
+        "description": "Finds exploits related to the target."
+    },
+    {
+        "name": "Search in PacketStorm",
+        "dork": "site:packetstormsecurity.com {nome}",
+        "description": "Finds exploits and advisories related to the target."
+    },
+    {
+        "name": "Search in CVE Details",
+        "dork": "site:cvedetails.com {nome}",
+        "description": "Finds CVEs related to the target."
+    },
+    {
+        "name": "Search in SecurityFocus",
+        "dork": "site:securityfocus.com {nome}",
+        "description": "Finds vulnerabilities related to the target."
+    },
+    {
+        "name": "Search in VirusTotal",
+        "dork": "site:virustotal.com {nome}",
+        "description": "Finds malware or malicious files related to the target."
+    },
+    {
+        "name": "Search in AlienVault OTX",
+        "dork": "site:otx.alienvault.com {nome}",
+        "description": "Finds threat intelligence related to the target."
+    },
+    {
+        "name": "Search in Have I Been Pwned",
+        "dork": "site:haveibeenpwned.com {nome}",
+        "description": "Finds breaches related to the target."
+    },
+    {
+        "name": "Search in SecurityTrails",
+        "dork": "site:securitytrails.com {nome}",
+        "description": "Finds DNS and domain information related to the target."
+    },
+    {
+        "name": "Search in DomainTools",
+        "dork": "site:domaintools.com {nome}",
+        "description": "Finds domain and WHOIS information related to the target."
+    },
+    {
+        "name": "Search in BuiltWith",
+        "dork": "site:builtwith.com {nome}",
+        "description": "Finds technologies used by the target."
+    },
+    {
+        "name": "Search in Wappalyzer",
+        "dork": "site:wappalyzer.com {nome}",
+        "description": "Finds technologies used by the target."
+    },
+    {
+        "name": "Search in PublicWWW",
+        "dork": "site:publicwww.com {nome}",
+        "description": "Finds exposed code snippets related to the target."
+    },
+    {
+        "name": "Search in GrayhatWarfare",
+        "dork": "site:grayhatwarfare.com {nome}",
+        "description": "Finds exposed buckets and files related to the target."
+    },
+    {
+        "name": "Search in LeakIX",
+        "dork": "site:leakix.net {nome}",
+        "description": "Finds exposed services and data related to the target."
+    },
+    {
+        "name": "Search in BinaryEdge",
+        "dork": "site:binaryedge.io {nome}",
+        "description": "Finds exposed services and devices related to the target."
+    },
+    {
+        "name": "Search in ZoomEye",
+        "dork": "site:zoomeye.org {nome}",
+        "description": "Finds exposed services and devices related to the target."
+    },
+    {
+        "name": "Search in FOFA",
+        "dork": "site:fofa.info {nome}",
+        "description": "Finds exposed services and devices related to the target."
+    },
+    {
+        "name": "Search in RiskIQ",
+        "dork": "site:riskiq.com {nome}",
+        "description": "Finds exposed assets related to the target."
+    },
+    {
+        "name": "Search in PassiveTotal",
+        "dork": "site:passivetotal.org {nome}",
+        "description": "Finds passive DNS and WHOIS information related to the target."
+    },
+    {
+        "name": "Search in URLScan",
+        "dork": "site:urlscan.io {nome}",
+        "description": "Finds historical scans of the target."
+    },
+    {
+        "name": "Search in Common Crawl",
+        "dork": "site:commoncrawl.org {nome}",
+        "description": "Finds historical snapshots of the target."
+    },
+    {
+        "name": "Search in Internet Archive",
+        "dork": "site:archive.org {nome}",
+        "description": "Finds historical snapshots of the target."
+    },
+    {
+        "name": "Search in DNSDumpster",
+        "dork": "site:dnstools.ch {nome}",
+        "description": "Finds DNS records related to the target."
+    },
+    {
+        "name": "Search in Whois Lookup",
+        "dork": "site:whois.domaintools.com {nome}",
+        "description": "Finds WHOIS information related to the target."
+    },
+    {
+        "name": "Search in Certificate Transparency Logs",
+        "dork": "site:crt.sh {nome}",
+        "description": "Finds SSL/TLS certificates related to the target."
+    },
+    {
+        "name": "Search in SSL Labs",
+        "dork": "site:ssllabs.com {nome}",
+        "description": "Finds SSL/TLS configuration details related to the target."
+    },
+    {
+        "name": "Search in Netcraft",
+        "dork": "site:netcraft.com {nome}",
+        "description": "Finds hosting and infrastructure details related to the target."
+    },
+    {
+        "name": "Search in Robtex",
+        "dork": "site:robtex.com {nome}",
+        "description": "Finds DNS and IP information related to the target."
+    },
+    {
+        "name": "Search in AbuseIPDB",
+        "dork": "site:abuseipdb.com {nome}",
+        "description": "Finds malicious IPs related to the target."
+    },
+    {
+        "name": "Search in Talos Intelligence",
+        "dork": "site:talosintelligence.com {nome}",
+        "description": "Finds threat intelligence related to the target."
+    },
+    {
+        "name": "Search in Hybrid Analysis",
+        "dork": "site:hybrid-analysis.com {nome}",
+        "description": "Finds malware analysis related to the target."
+    },
+    {
+        "name": "Search in MalwareBazaar",
+        "dork": "site:malwarebazaar.abuse.ch {nome}",
+        "description": "Finds malware samples related to the target."
+    },
+    {
+        "name": "Search in URLVoid",
+        "dork": "site:urlvoid.com {nome}",
+        "description": "Finds reputation details related to the target."
+    },
+    {
+        "name": "Search in Sucuri SiteCheck",
+        "dork": "site:sitecheck.sucuri.net {nome}",
+        "description": "Finds security issues related to the target."
+    },
+    {
+        "name": "Search in Qualys SSL Labs",
+        "dork": "site:ssllabs.com {nome}",
+        "description": "Finds SSL/TLS configuration issues related to the target."
+    },
+    {
+        "name": "Search in Cloudflare Radar",
+        "dork": "site:radar.cloudflare.com {nome}",
+        "description": "Finds traffic and performance insights related to the target."
+    },
+    {
+        "name": "Search in Sublist3r",
+        "dork": "site:sublist3r.com {nome}",
+        "description": "Finds subdomains related to the target."
+    },
+    {
+        "name": "Search in Amass",
+        "dork": "site:amass.dev {nome}",
+        "description": "Finds subdomains and assets related to the target."
+    },
+    {
+        "name": "Search in Assetfinder",
+        "dork": "site:assetfinder.dev {nome}",
+        "description": "Finds subdomains and assets related to the target."
+    },
+    {
+        "name": "Search in Aquatone",
+        "dork": "site:aquatone.dev {nome}",
+        "description": "Finds visual recon data related to the target."
+    },
+    {
+        "name": "Search in Dirsearch",
+        "dork": "site:dirsearch.github.io {nome}",
+        "description": "Finds directory and file paths related to the target."
+    },
+    {
+        "name": "Search in Nikto",
+        "dork": "site:nikto.io {nome}",
+        "description": "Finds web server vulnerabilities related to the target."
+    },
+    {
+        "name": "Search in WPScan",
+        "dork": "site:wpscan.com {nome}",
+        "description": "Finds WordPress vulnerabilities related to the target."
+    },
+    {
+        "name": "Search in Nmap Scripts",
+        "dork": "site:nmap.org {nome}",
+        "description": "Finds Nmap scripts related to the target."
+    },
+    {
+        "name": "Search in Metasploit Modules",
+        "dork": "site:metasploit.com {nome}",
+        "description": "Finds Metasploit modules related to the target."
+    },
+    {
+        "name": "Search in Exploit Pack",
+        "dork": "site:exploitpack.com {nome}",
+        "description": "Finds exploit packs related to the target."
+    },
+    {
+        "name": "Search in Rapid7",
+        "dork": "site:rapid7.com {nome}",
+        "description": "Finds vulnerabilities and exploits related to the target."
+    },
+    {
+        "name": "Search in Tenable",
+        "dork": "site:tenable.com {nome}",
+        "description": "Finds vulnerabilities and plugins related to the target."
+    },
+    {
+        "name": "Search in Qualys",
+        "dork": "site:qualys.com {nome}",
+        "description": "Finds vulnerabilities and scans related to the target."
+    },
+    {
+        "name": "Search in Nessus",
+        "dork": "site:nessus.org {nome}",
+        "description": "Finds vulnerabilities and scans related to the target."
+    },
+    {
+        "name": "Search in OpenVAS",
+        "dork": "site:openvas.org {nome}",
+        "description": "Finds vulnerabilities and scans related to the target."
+    },
+    {
+        "name": "Search in Burp Suite",
+        "dork": "site:portswigger.net {nome}",
+        "description": "Finds vulnerabilities and tools related to the target."
+    },
+    {
+        "name": "Search in OWASP ZAP",
+        "dork": "site:zaproxy.org {nome}",
+        "description": "Finds vulnerabilities and tools related to the target."
+    },
+    {
+        "name": "Search in Arachni",
+        "dork": "site:arachni-scanner.com {nome}",
+        "description": "Finds vulnerabilities and scans related to the target."
+    },
+    {
+        "name": "Search in Acunetix",
+        "dork": "site:acunetix.com {nome}",
+        "description": "Finds vulnerabilities and scans related to the target."
+    },
+    {
+        "name": "Search in Netsparker",
+        "dork": "site:netsparker.com {nome}",
+        "description": "Finds vulnerabilities and scans related to the target."
+    },
+    {
+        "name": "Search in Invicti",
+        "dork": "site:invicti.com {nome}",
+        "description": "Finds vulnerabilities and scans related to the target."
+    },
+    {
+        "name": "Search in AppSpider",
+        "dork": "site:rapid7.com/appspider {nome}",
+        "description": "Finds vulnerabilities and scans related to the target."
+    },
+    {
+        "name": "Search in Veracode",
+        "dork": "site:veracode.com {nome}",
+        "description": "Finds vulnerabilities and scans related to the target."
+    },
+    {
+        "name": "Search in Fortify",
+        "dork": "site:fortify.com {nome}",
+        "description": "Finds vulnerabilities and scans related to the target."
+    },
+    {
+        "name": "Search in Checkmarx",
+        "dork": "site:checkmarx.com {nome}",
+        "description": "Finds vulnerabilities and scans related to the target."
+    },
+    {
+        "name": "Search in SonarQube",
+        "dork": "site:sonarqube.org {nome}",
+        "description": "Finds code quality and security issues related to the target."
+    },
+    {
+        "name": "Search in CodeQL",
+        "dork": "site:codeql.github.com {nome}",
+        "description": "Finds code vulnerabilities related to the target."
+    },
+    {
+        "name": "Search in Semgrep",
+        "dork": "site:semgrep.dev {nome}",
+        "description": "Finds code vulnerabilities related to the target."
+    },
+    {
+        "name": "Search in Trivy",
+        "dork": "site:trivy.dev {nome}",
+        "description": "Finds container and dependency vulnerabilities related to the target."
+    },
+    {
+        "name": "Search in Grype",
+        "dork": "site:grype.dev {nome}",
+        "description": "Finds container and dependency vulnerabilities related to the target."
+    },
+    {
+        "name": "Search in Anchore",
+        "dork": "site:anchore.com {nome}",
+        "description": "Finds container vulnerabilities related to the target."
+    },
+    {
+        "name": "Search in Clair",
+        "dork": "site:coreos.com/clair {nome}",
+        "description": "Finds container vulnerabilities related to the target."
+    },
+    {
+        "name": "Search in Docker Hub",
+        "dork": "site:hub.docker.com {nome}",
+        "description": "Finds Docker images related to the target."
+    },
+    {
+        "name": "Search in Kubernetes",
+        "dork": "site:kubernetes.io {nome}",
+        "description": "Finds Kubernetes resources related to the target."
+    },
+    {
+        "name": "Search in Helm",
+        "dork": "site:helm.sh {nome}",
+        "description": "Finds Helm charts related to the target."
+    },
+    {
+        "name": "Search in Terraform Registry",
+        "dork": "site:registry.terraform.io {nome}",
+        "description": "Finds Terraform modules related to the target."
+    },
+    {
+        "name": "Search in Pulumi",
+        "dork": "site:pulumi.com {nome}",
+        "description": "Finds infrastructure as code resources related to the target."
+    },
+    {
+        "name": "Search in Ansible Galaxy",
+        "dork": "site:galaxy.ansible.com {nome}",
+        "description": "Finds Ansible roles related to the target."
+    },
+    {
+        "name": "Search in Chef Supermarket",
+        "dork": "site:supermarket.chef.io {nome}",
+        "description": "Finds Chef cookbooks related to the target."
+    },
+    {
+        "name": "Search in Puppet Forge",
+        "dork": "site:forge.puppet.com {nome}",
+        "description": "Finds Puppet modules related to the target."
+    },
+    {
+        "name": "Search in SaltStack",
+        "dork": "site:saltstack.com {nome}",
+        "description": "Finds SaltStack states related to the target."
+    },
+    {
+        "name": "Search in Vagrant Cloud",
+        "dork": "site:vagrantup.com {nome}",
+        "description": "Finds Vagrant boxes related to the target."
+    },
+    {
+        "name": "Search in HashiCorp Vault",
+        "dork": "site:vaultproject.io {nome}",
+        "description": "Finds secrets management resources related to the target."
+    },
+    {
+        "name": "Search in Consul",
+        "dork": "site:consul.io {nome}",
+        "description": "Finds service discovery resources related to the target."
+    },
+    {
+        "name": "Search in Nomad",
+        "dork": "site:nomadproject.io {nome}",
+        "description": "Finds workload orchestration resources related to the target."
+    },
+    {
+        "name": "Search in Boundary",
+        "dork": "site:boundaryproject.io {nome}",
+        "description": "Finds secure access resources related to the target."
+    },
+    {
+        "name": "Search in Waypoint",
+        "dork": "site:waypointproject.io {nome}",
+        "description": "Finds deployment resources related to the target."
+    },
+    {
+        "name": "Search in Sentinel",
+        "dork": "site:sentinelproject.io {nome}",
+        "description": "Finds policy enforcement resources related to the target."
+    },
+    {
+        "name": "Search in Terraform Cloud",
+        "dork": "site:app.terraform.io {nome}",
+        "description": "Finds Terraform Cloud resources related to the target."
+    },
+    {
+        "name": "Search in GitHub Actions",
+        "dork": "site:github.com/actions {nome}",
+        "description": "Finds CI/CD pipelines related to the target."
+    },
+    {
+        "name": "Search in GitLab CI/CD",
+        "dork": "site:gitlab.com/ci-cd {nome}",
+        "description": "Finds CI/CD pipelines related to the target."
+    },
+    {
+        "name": "Search in CircleCI",
+        "dork": "site:circleci.com {nome}",
+        "description": "Finds CI/CD pipelines related to the target."
+    },
+    {
+        "name": "Search in Jenkins",
+        "dork": "site:jenkins.io {nome}",
+        "description": "Finds CI/CD pipelines related to the target."
+    },
+    {
+        "name": "Parameter-Based Search Pages",
+        "dork": "inurl:& inurl:test OR inurl:quiz OR inurl:survey OR inurl:game OR inurl:competition OR inurl:form OR inurl:title OR inurl:search OR inurl:city OR inurl:date OR inurl:topic",
+        "description": "Finds pages with query parameters that may be vulnerable to injection attacks."
+    },
+    {
+        "name": "Search Query Parameters",
+        "dork": "inurl:& inurl:search inurl:q OR inurl:search inurl:s",
+        "description": "Finds search functionality with specific query strings that may expose sensitive data."
+    },
+    {
+        "name": "Index PHP with Query Strings",
+        "dork": "index.php? inurl:& OR inurl:search OR inurl:suche OR inurl:page OR inurl:query OR inurl:input OR inurl:next OR inurl:target",
+        "description": "Finds index.php pages with various query string parameters for testing."
+    },
+    {
+        "name": "Search Functionality",
+        "dork": "inurl:search OR inurl:suche OR inurl:query filetype:html OR filetype:php",
+        "description": "Finds search functionality pages that may have vulnerabilities like XSS or SQLi."
+    },
+    {
+        "name": "Dynamic Module Pages",
+        "dork": ".php?module= OR ?action= OR ?page= OR ?pid= OR ?search=",
+        "description": "Finds dynamic pages with module or action parameters that could be exploited."
+    },
+    {
+        "name": "Book and Product Details",
+        "dork": "Book.php?bookID= OR BookDetails.php?ID= OR Browse_Item_Details.php?Store_Id= OR StoreRedirect.php?ID= OR ViewProduct.php?misc=",
+        "description": "Finds book or product detail pages that may expose sensitive information."
+    },
+    {
+        "name": "Miscellaneous Dynamic Parameters",
+        "dork": "WsAncillary.php?ID= OR WsPages.php?ID= OR noticiasDetalle.php?xid= OR about.php?cartID= OR accinfo.php?cartId=",
+        "description": "Finds miscellaneous dynamic pages with ID parameters that may be vulnerable."
+    },
+    {
+        "name": "Affiliate and Archive Pages",
+        "dork": "affiliate-agreement.cfm?storeid= OR affiliate.php?ID= OR affiliates.php?id= OR archive.php?id= OR archive/get.php?message_id=",
+        "description": "Finds affiliate or archive pages that may expose sensitive data."
+    },
+    {
+        "name": "Article and Board Pages",
+        "dork": "article.php?id= OR basket.php?id= OR bbs/bbsView.php?id= OR bbs/view.php?no= OR board/board.html?table= OR board/view.php?no=",
+        "description": "Finds article or bulletin board pages that may have vulnerabilities."
+    },
+    {
+        "name": "Book and Catalog Pages",
+        "dork": "book.php?ID= OR book/bookcover.php?bookid= OR book_detail.php?BookID= OR browse.php?catid= OR catalog/product.php?cat_id=",
+        "description": "Finds book or catalog pages that may expose sensitive information."
+    },
+    {
+        "name": "Category and Content Pages",
+        "dork": "category.php?catid= OR category.php?id= OR content.php?ID= OR content.php?PID=",
+        "description": "Finds category or content pages that may have vulnerabilities."
+    },
+    {
+        "name": "Cart and Checkout Pages",
+        "dork": "add-to-cart.php?ID= OR add.php?bookid= OR addItem.php OR addToCart.php?idProduct= OR cart.php?action=",
+        "description": "Finds shopping cart or checkout pages that may expose sensitive data."
+    },
+    {
+        "name": "Community and Event Pages",
+        "dork": "community/calendar-event-fr.php?id= OR cloudbank/detail.php?ID= OR cbmer/congres/page.php?LAN=",
+        "description": "Finds community or event pages that may have vulnerabilities."
+    },
+    {
+        "name": "Content Pages with Parameters",
+        "dork": "content.php?PID= OR content.php?id= OR content.php?p= OR content/detail.php?id= OR content/index.php?id=",
+        "description": "Finds content pages with query parameters that may be vulnerable."
+    },
+    {
+        "name": "County Facts and Cryolab Content",
+        "dork": "county-facts/diary/vcsgen.php?id= OR cryolab/content.php?cid=",
+        "description": "Finds specific content pages related to county facts or cryolab that may expose data."
+    },
+    {
+        "name": "Customer Boards and Default Paths",
+        "dork": "customer/board.htm?mode= OR default.php?cPath=",
+        "description": "Finds customer boards or default paths that may have vulnerabilities."
+    },
+    {
+        "name": "Detail Pages",
+        "dork": "detail.php?id= OR detail.php?prodID= OR detail.php?prodid= OR details.php?ProdID= OR details.php?prodId=",
+        "description": "Finds product or item detail pages that may expose sensitive information."
+    },
+    {
+        "name": "Doc Detail and E-Board",
+        "dork": "docDetail.aspx?chnum= OR e_board/modifyform.html?code=",
+        "description": "Finds document detail pages or e-board forms that may have vulnerabilities."
+    },
+    {
+        "name": "Product Pages",
+        "dork": "els_/product/product.php?id= OR en/publications.php?id= OR eng/rgboard/view.php?&bbs_id=",
+        "description": "Finds product or publication pages that may expose sensitive data."
+    },
+    {
+        "name": "English Functionality",
+        "dork": "english/fonction/print.php?id= OR english/publicproducts.php?groupid=",
+        "description": "Finds English-specific functionality pages that may have vulnerabilities."
+    },
+    {
+        "name": "Event Details",
+        "dork": "events/detail.php?ID=",
+        "description": "Finds event detail pages that may expose sensitive information."
+    },
+    {
+        "name": "Forum Profiles",
+        "dork": "forum/profile.php?id=",
+        "description": "Finds forum profile pages that may expose user data."
+    },
+    {
+        "name": "Gallery Pages",
+        "dork": "gallery.php?id= OR gallerysort.php?iid=",
+        "description": "Finds gallery pages that may have vulnerabilities."
+    },
+    {
+        "name": "General and Gig Pages",
+        "dork": "general.php?id= OR gig.php?id=",
+        "description": "Finds general or gig pages that may expose sensitive data."
+    },
+    {
+        "name": "Global Product Pages",
+        "dork": "global/product/product.php?gubun=",
+        "description": "Finds global product pages that may have vulnerabilities."
+    },
+    {
+        "name": "GNU and GoBoard Pages",
+        "dork": "gnu/?doc= OR goboard/front/board_view.php?code=",
+        "description": "Finds GNU or GoBoard pages that may expose sensitive information."
+    },
+    {
+        "name": "Goods Detail and Help Pages",
+        "dork": "goods_detail.php?data= OR help/com_view.html?code=",
+        "description": "Finds goods detail or help pages that may have vulnerabilities."
+    },
+    {
+        "name": "Home and IdleChat Pages",
+        "dork": "home.php?cat= OR idlechat/message.php?id=",
+        "description": "Finds home or idle chat pages that may expose sensitive data."
+    },
+    {
+        "name": "Index Pages with Parameters",
+        "dork": "index.php/en/component/pvm/?view= OR index.php?area_id= OR index.php?i= OR index.php?id= OR index.php?modus= OR index.php?page= OR index.php?pageid= OR index.php?section= OR index.php?site= OR index.php?url= OR index.php?w=",
+        "description": "Finds index pages with various query parameters that may have vulnerabilities."
+    },
+    {
+        "name": "Item and KBoard Pages",
+        "dork": "item.php?id= OR item_book.php?CAT= OR kboard/kboard.php?board=",
+        "description": "Finds item or KBoard pages that may expose sensitive information."
+    },
+    {
+        "name": "LS and M_View Pages",
+        "dork": "ls.php?id= OR m_view.php?ps_db=",
+        "description": "Finds LS or M_View pages that may have vulnerabilities."
+    },
+    {
+        "name": "Magazines and Main Pages",
+        "dork": "magazines/adult_magazine_full_year.php?magid= OR magazines/adult_magazine_single_page.php?magid= OR main.php?id=",
+        "description": "Finds magazine or main pages that may expose sensitive data."
+    },
+    {
+        "name": "Mall and Media Pages",
+        "dork": "mall/more.php?ProdID= OR media/pr.php?id=",
+        "description": "Finds mall or media pages that may have vulnerabilities."
+    },
+    {
+        "name": "Modules and More Detail Pages",
+        "dork": "modules.php?bookid= OR more_detail.php?id= OR more_details.php?id=",
+        "description": "Finds module or detail pages that may expose sensitive information."
+    },
+    {
+        "name": "N_ReplyBoard and News Pages",
+        "dork": "n_replyboard.php?typeboard= OR news.php?ID= OR news.php?id= OR news.php?t= OR news/news/title_show.php?id= OR news/temp.php?id= OR news_and_notices.php?news_id= OR news_item.php?id=",
+        "description": "Finds reply board or news pages that may have vulnerabilities."
+    },
+    {
+        "name": "NyHeder and Obio Pages",
+        "dork": "nyheder.htm?show= OR obio/detail.php?id=",
+        "description": "Finds NyHeder or Obio pages that may expose sensitive data."
+    },
+    {
+        "name": "Online Sales and Order Pages",
+        "dork": "onlinesales/product.php?product_id= OR order.asp?lotid=",
+        "description": "Finds online sales or order pages that may have vulnerabilities."
+    },
+    {
+        "name": "OurBlog and Packages Display",
+        "dork": "ourblog.php?categoryid= OR packages_display.php?ref=",
+        "description": "Finds blog or package display pages that may expose sensitive information."
+    },
+    {
+        "name": "Page Modules",
+        "dork": "page.php?modul= OR page.php?module= OR page/de/produkte/produkte.php?prodID=",
+        "description": "Finds page modules that may have vulnerabilities."
+    },
+    {
+        "name": "Pages and Photo Gallery",
+        "dork": "pages.php?id= OR photogallery.php?id=",
+        "description": "Finds pages or photo galleries that may expose sensitive data."
+    },
+    {
+        "name": "PHPX and Podcast Pages",
+        "dork": "phpx?PageID OR podcast/item.php?pid=",
+        "description": "Finds PHPX or podcast pages that may have vulnerabilities."
+    },
+    {
+        "name": "Previous Results and Print Pages",
+        "dork": "prev_results.php?prodID= OR print.php?id= OR print.php?sid=",
+        "description": "Finds previous results or print pages that may expose sensitive information."
+    },
+    {
+        "name": "Product List and Product Pages",
+        "dork": "product-list.php?id= OR product.php?id= OR product.php?pid= OR product.php?shopprodid= OR product.php?sku= OR product/list.php?pid= OR product/product.php?cate= OR product/product.php?product_no= OR productList.php?cat=",
+        "description": "Finds product list or product pages that may have vulnerabilities."
+    },
+    {
+        "name": "Product Detail and Info Pages",
+        "dork": "product_detail.php?product_id= OR product_details.php?prodid= OR product_info.php?products_id=",
+        "description": "Finds product detail or info pages that may expose sensitive data."
+    },
+    {
+        "name": "Product List and FID",
+        "dork": "productlist.php?fid=",
+        "description": "Finds product lists with specific FID parameters that may have vulnerabilities."
+    },
+    {
+        "name": "Redirect Parameters",
+        "dork": "all.php?redirect= OR gallery.php?redirect= OR include.php?redirect=",
+        "description": "Finds pages with redirect parameters that may be vulnerable to open redirects."
+    },
+    {
+        "name": "Configuration Files",
+        "dork": "inurl:config pass OR inurl:config secret OR inurl:config.php dbpasswd OR inurl:config.php pass OR inurl:config.php password OR inurl:configuration OR inurl:env OR inurl:setting",
+        "description": "Finds configuration files that may expose sensitive data like passwords or secrets."
+    },
+    {
+        "name": "Log Files",
+        "dork": "filetype:log",
+        "description": "Finds publicly accessible log files."
+    },
+    {
+        "name": "Exposed .htaccess",
+        "dork": "intext:\"Index of /\" +.htaccess",
+        "description": "Finds exposed .htaccess files."
+    },
+    {
+        "name": "Index of Directories",
+        "dork": "intitle:\"index of\"",
+        "description": "Finds directory listings that may expose sensitive files."
+    },
+    {
+        "name": "Admin Login Pages",
+        "dork": "inurl:& intext:admin intext:login",
+        "description": "Finds admin login pages that may be vulnerable."
+    },
+    {
+        "name": "Search Functionality",
+        "dork": "inurl:& intext:search",
+        "description": "Finds search functionality that may expose sensitive data."
+    },
+    {
+        "name": "Backup Files",
+        "dork": "inurl:backup OR inurl:backup.zip",
+        "description": "Finds backup files that may contain sensitive information."
+    },
+    {
+        "name": "Quiz Pages",
+        "dork": "inurl:quiz inurl:&",
+        "description": "Finds quiz-related pages that may have vulnerabilities."
+    },
+    {
+        "name": "Makefile.toml",
+        "dork": "inurl:Makefile.toml",
+        "description": "Finds Makefile.toml files that may expose build configurations."
+    },
+    {
+        "name": "XML Credentials",
+        "dork": "hostname user password filetype:xml",
+        "description": "Finds XML files containing credentials."
+    },
+    {
+        "name": "SQL Database Files",
+        "dork": "inurl:db.sql OR inurl:db.sqlite OR inurl:setup.sql OR inurl:mysql.sql OR inurl:users.sql OR inurl:backup.sql OR inurl:db filetype:sql OR inurl:backup filetype:sql",
+        "description": "Finds SQL database files that may expose sensitive data."
+    },
+    {
+        "name": "MySQL Dump Files",
+        "dork": "\"-- MySQL dump\" \"Server version\" \"Table structure for table\"",
+        "description": "Finds MySQL dump files that may contain database schemas."
+    },
+    {
+        "name": "WebSQL Directories",
+        "dork": "inurl:/db/websql/",
+        "description": "Finds WebSQL directories that may expose database interfaces."
+    },
+    {
+        "name": "Company Data Files",
+        "dork": "company filetype:xls OR company filetype:cvs",
+        "description": "Finds Excel or CSV files containing company data."
+    },
+    {
+        "name": "Git Credentials",
+        "dork": "inurl:.git-credentials OR inurl:.gitconfig OR intext:\"index of /.git\" \"parent directory\" OR filetype:git -github.com inurl:\"/.git\" OR (intext:\"index of /.git\") (\"parent directory\") OR inurl:ORIG_HEAD OR intitle:\"index of\" \".gitignore\" OR \".git\" intitle:\"Index of\" OR \"Parent Directory\" \"Last modified\" git",
+        "description": "Finds exposed Git credentials or repositories."
+    },
+    {
+        "name": "JavaScript Secrets",
+        "dork": "secret inurl:js filetype:txt",
+        "description": "Finds JavaScript files containing secrets or sensitive data."
+    },
+    {
+        "name": "Admin Login Pages by Domain",
+        "dork": "site:target.com inurl:admin | administrator | adm | login | l0gin | wp-login OR inurl:wp-login OR inurl:login OR inurl:user-login OR inurl:\"/wp-login.php?action=lostpassword\"",
+        "description": "Finds admin login pages for a specific domain."
+    },
+    {
+        "name": "Generic Login Pages",
+        "dork": "site:password.*.* intitle:\"login\" OR site:portal.*.* intitle:\"login\" OR site:sftp.*.*/ intext:\"login\" intitle:\"server login\" OR site:user.*.* intitle:\"login\"",
+        "description": "Finds generic login pages across domains."
+    },
+    {
+        "name": "Joomla Admin Pages",
+        "dork": "\"Joomla! Administration Login\" inurl:\"/index.php\" OR intext:Joomla 1.6 inurl:index.php/login",
+        "description": "Finds Joomla admin login pages."
+    },
+    {
+        "name": "Grafana Login Pages",
+        "dork": "intitle:\"grafana\" inurl:\"/grafana/login\" \"Forgot your password\" OR inurl:login \"Welcome to Grafana\"",
+        "description": "Finds Grafana login pages."
+    },
+    {
+        "name": "HostingAccelerator Login",
+        "dork": "intext:\"HostingAccelerator\" intitle:\"login\" +\"Username\" -\"news\" -demo",
+        "description": "Finds HostingAccelerator login pages."
+    },
+    {
+        "name": "IMail Server Login",
+        "dork": "intext:\"IMail Server Web Messaging\" intitle:login",
+        "description": "Finds IMail Server login pages."
+    },
+    {
+        "name": "EFTClient Login",
+        "dork": "inurl:/eftclient/account/login.htm",
+        "description": "Finds EFTClient login pages."
+    },
+    {
+        "name": "Pro Users Login",
+        "dork": "inurl:/pro_users/login",
+        "description": "Finds Pro Users login pages."
+    },
+    {
+        "name": "ServiceDesk Login",
+        "dork": "inurl:\"servicedesk/customer/user/login\"",
+        "description": "Finds ServiceDesk login pages."
+    },
+    {
+        "name": "phpMyAdmin Password Reset",
+        "dork": "inurl:\"/phpmyadmin/user_password.php\"",
+        "description": "Finds phpMyAdmin password reset pages."
+    },
+    {
+        "name": "Drupal Password Reset",
+        "dork": "inurl:\"/?q=user/password/\"",
+        "description": "Finds Drupal password reset pages."
+    },
+    {
+        "name": "Carbon Admin Login",
+        "dork": "inurl:\"/carbon/admin/login.jsp\"",
+        "description": "Finds Carbon admin login pages."
+    },
+    {
+        "name": "WebVPN Login",
+        "dork": "inurl:webvpn.html \"login\" \"Please enter your\"",
+        "description": "Finds WebVPN login pages."
+    },
+    {
+        "name": "Joomla Administrator AutoLogin",
+        "dork": "inurl:/administrator/index.php?autologin=1",
+        "description": "Finds Joomla administrator auto-login pages."
+    },
+    {
+        "name": "Generic Login Pages with User and Password",
+        "dork": "\"login\" \"user\" \"password\"",
+        "description": "Finds generic login pages with user and password fields."
+    },
+    {
+        "name": "Mac OS Personal Web Sharing",
+        "dork": "\"About Mac OS Personal Web Sharing\"",
+        "description": "Finds Mac OS Personal Web Sharing pages."
+    },
+    {
+        "name": "AnWeb Server",
+        "dork": "\"AnWeb/1.42h\" intitle:index.of",
+        "description": "Finds AnWeb server index pages."
+    },
+    {
+        "name": "CERN HTTPD",
+        "dork": "\"CERN httpd 3.0B (VAX VMS)\"",
+        "description": "Finds CERN HTTPD server index pages."
+    },
+    {
+        "name": "Cisco JSP Pages",
+        "dork": "\"Cisco Systems, Inc. All Rights Reserved.\" -cisco.com filetype:jsp",
+        "description": "Finds Cisco-related JSP pages."
+    },
+    {
+        "name": "JRun Web Server",
+        "dork": "\"JRun Web Server\" intitle:index.of",
+        "description": "Finds JRun Web Server index pages."
+    },
+    {
+        "name": "Microsoft-IIS Servers",
+        "dork": "\"Microsoft-IIS/* server at\" intitle:index.of OR \"Microsoft-IIS/4.0\" intitle:index.of OR \"Microsoft-IIS/5.0 server at\" OR \"Microsoft-IIS/6.0\" intitle:index.of",
+        "description": "Finds Microsoft-IIS server index pages."
+    },
+    {
+        "name": "Cott Systems Inc",
+        "dork": "intext:\" - 2019 Cott Systems, Inc.\"",
+        "description": "Finds pages related to Cott Systems Inc."
+    },
+    {
+        "name": "Microsoft-IIS/5.0 404 Error",
+        "dork": "intext:\"404 Object Not Found\" Microsoft-IIS/5.0",
+        "description": "Finds 404 error pages on Microsoft-IIS/5.0 servers."
+    },
+    {
+        "name": "eVetSites",
+        "dork": "intext:\"Brought to you by eVetSites\"",
+        "description": "Finds pages powered by eVetSites."
+    },
+    {
+        "name": "Healthy Product Model Ethernet",
+        "dork": "intext:\"Healthy\" + \"Product model\" + \" Client IP\" + \"Ethernet\"",
+        "description": "Finds devices exposing health-related data."
+    },
+    {
+        "name": "Quantum CMS",
+        "dork": "intext:\"Powered by (Quantum | Quantum CMS | CMS)\"",
+        "description": "Finds pages powered by Quantum CMS."
+    },
+    {
+        "name": "Abyss Web Server",
+        "dork": "intext:\"Powered by Abyss Web Server\"",
+        "description": "Finds pages powered by Abyss Web Server."
+    },
+    {
+        "name": "GetSimple CMS",
+        "dork": "intext:\"Powered by GetSimple\" -site:get-simple.info",
+        "description": "Finds pages powered by GetSimple CMS."
+    },
+    {
+        "name": "Nesta CMS",
+        "dork": "intext:\"Powered by Nesta\"",
+        "description": "Finds pages powered by Nesta CMS."
+    },
+    {
+        "name": "Sentora",
+        "dork": "intext:\"Powered by Sentora\" -github.com",
+        "description": "Finds pages powered by Sentora."
+    },
+    {
+        "name": "Typesetter CMS",
+        "dork": "intext:\"Powered by Typesetter\"",
+        "description": "Finds pages powered by Typesetter CMS."
+    },
+    {
+        "name": "phpSQLiteCMS",
+        "dork": "intext:\"Powered by phpSQLiteCMS\" | intitle:\"phpSQLiteCMS - A simple & lightweight CMS\"",
+        "description": "Finds pages powered by phpSQLiteCMS."
+    },
+    {
+        "name": "SonarQube",
+        "dork": "intext:\"SonarQube\" + \"by SonarSource SA.\" + \"LGPL v3\"",
+        "description": "Finds SonarQube instances."
+    },
+    {
+        "name": "Multicast Group Beacon",
+        "dork": "intext:\"Target Multicast Group\" \"beacon\"",
+        "description": "Finds multicast group beacon configurations."
+    },
+    {
+        "name": "Apache2 Default Page",
+        "dork": "intext:\"This is the default welcome page used to test the correct operation of the Apache2 server\"",
+        "description": "Finds Apache2 default welcome pages."
+    },
+    {
+        "name": "CodeIgniter Welcome Page",
+        "dork": "intext:\"Welcome to CodeIgniter!\"",
+        "description": "Finds CodeIgniter welcome pages."
+    },
+    {
+        "name": "Access Logs",
+        "dork": "intext:\"index of /\" \"Index of\" access_log",
+        "description": "Finds exposed access logs."
+    },
+    {
+        "name": "Apache Index Pages",
+        "dork": "intext:Apache/2.2.29 (Unix) mod_ssl/2.2.29 | intitle:\"Index of /\"",
+        "description": "Finds Apache index pages."
+    },
+    {
+        "name": "Nginx Welcome Page",
+        "dork": "intitle:\"Welcome to nginx!\" + \"Thank you for using nginx.\"",
+        "description": "Finds Nginx welcome pages."
+    },
+    {
+        "name": "300 Multiple Choices",
+        "dork": "intitle:\"300 multiple choices\"",
+        "description": "Finds HTTP 300 multiple choices responses."
+    },
+    {
+        "name": "WAMPSERVER Home Page",
+        "dork": "intitle:\"Accueil WAMPSERVER\" intext:\"Configuration Serveur\"",
+        "description": "Finds WAMPSERVER home pages."
+    },
+    {
+        "name": "Apache Documentation",
+        "dork": "intitle:\"Apache HTTP Server\" intitle:\"documentation\"",
+        "description": "Finds Apache HTTP Server documentation pages."
+    },
+    {
+        "name": "Apache Status",
+        "dork": "intitle:\"Apache Status\" \"Apache Server Status for\" OR intitle:\"Apache Status\" | intext:\"Apache Server Status\"",
+        "description": "Finds Apache server status pages."
+    },
+    {
+        "name": "Apache2 Default Pages",
+        "dork": "intitle:\"Apache2 Debian Default Page: It works\" OR intitle:\"Apache2 Ubuntu Default Page: It works\"",
+        "description": "Finds Apache2 default pages for Debian/Ubuntu."
+    },
+    {
+        "name": "Axis Happiness Page",
+        "dork": "intitle:\"Axis Happiness Page\" \"Examining webapp configuration\"",
+        "description": "Finds Axis Happiness Pages."
+    },
+    {
+        "name": "BadBlue File Sharing",
+        "dork": "intitle:\"BadBlue: the file-sharing web server anyone can use\"",
+        "description": "Finds BadBlue file-sharing web servers."
+    },
+    {
+        "name": "Nagios Network Status",
+        "dork": "intitle:\"Current Network Status\" \"Nagios\"",
+        "description": "Finds Nagios network status pages."
+    },
+    {
+        "name": "Directory Listing",
+        "dork": "intitle:\"Directory Listing, Index of /*/\"",
+        "description": "Finds directory listings."
+    },
+    {
+        "name": "Default Home Page Example",
+        "dork": "intitle:\"Document title goes here\" intitle:\"used by web search tools\" \" example of a simple Home Page\"",
+        "description": "Finds default home page examples."
+    },
+    {
+        "name": "Parallels Domain Default Page",
+        "dork": "intitle:\"Domain Default page\" \"Parallels IP Holdings GmbH\"",
+        "description": "Finds Parallels domain default pages."
+    },
+    {
+        "name": "GlassFish Server",
+        "dork": "intitle:\"GlassFish Server - Server Running\"",
+        "description": "Finds GlassFish server pages."
+    },
+    {
+        "name": "HFS Server",
+        "dork": "intitle:\"HFS\" \"Server Uptime\" \"Server time\"",
+        "description": "Finds HFS server pages."
+    },
+    {
+        "name": "IIS Windows Server",
+        "dork": "intitle:\"IIS Windows Server\" -inurl:\"IIS Windows Server\"",
+        "description": "Finds IIS Windows Server pages."
+    },
+    {
+        "name": "IPC@CHIP Infopage",
+        "dork": "intitle:\"IPC@CHIP Infopage\"",
+        "description": "Finds IPC@CHIP infopages."
+    },
+    {
+        "name": "Icecast Streaming Media Server",
+        "dork": "intitle:\"Icecast Streaming Media Server\"",
+        "description": "Finds Icecast streaming media server pages."
+    },
+    {
+        "name": "Apache Index Listings",
+        "dork": "intitle:\"Index of *\" mode links bytes last-changed name",
+        "description": "Finds Apache index listings."
+    },
+    {
+        "name": "Surftown Index Page",
+        "dork": "intitle:\"Index of /\" \"Proudly Served by Surftown at\"",
+        "description": "Finds Surftown index pages."
+    },
+    {
+        "name": "Apache/2.4.7 (Ubuntu) Server",
+        "dork": "intitle:\"Index of\" \"Apache/2.4.7 (Ubuntu) Server\"",
+        "description": "Finds Apache/2.4.7 (Ubuntu) server index pages."
+    },
+    {
+        "name": "Government Index Pages",
+        "dork": "intitle:\"Index of\" site:.gov intext:\"Server at\"",
+        "description": "Finds government index pages."
+    },
+    {
+        "name": "Lists Web Service",
+        "dork": "intitle:\"Lists Web Service\"",
+        "description": "Finds Lists Web Service pages."
+    },
+    {
+        "name": "Lotus Domino Go Webserver",
+        "dork": "intitle:\"Lotus Domino Go Webserver:\" \"Tuning your webserver\" -site:ibm.com",
+        "description": "Finds Lotus Domino Go Webserver pages."
+    },
+    {
+        "name": "Microsoft IIS 8",
+        "dork": "intitle:\"Microsoft Internet Information Services 8\" -IIS",
+        "description": "Finds Microsoft IIS 8 pages."
+    },
+    {
+        "name": "Miniweb Start Page",
+        "dork": "intitle:\"Miniweb Start Page\" | \"/CSS/Miniweb.css\"",
+        "description": "Finds Miniweb start pages."
+    },
+    {
+        "name": "Monsta FTP",
+        "dork": "intitle:\"Monsta ftp\" intext:\"Lock session to IP\"",
+        "description": "Finds Monsta FTP pages."
+    },
+    {
+        "name": "Object Not Found",
+        "dork": "intitle:\"Object not found!\" intext:\"Apache/2.0.* (Linux/SuSE)\" OR intitle:\"Object not found\" netware \"apache 1..\"",
+        "description": "Finds object not found pages."
+    },
+    {
+        "name": "Open WebMail",
+        "dork": "intitle:\"Open WebMail\" \"Open WebMail version (2.20|2.21|2.30) \"",
+        "description": "Finds Open WebMail pages."
+    },
+    {
+        "name": "Page Revision",
+        "dork": "intitle:\"Page rev */*/*\" inurl:\"admin\"",
+        "description": "Finds page revision admin pages."
+    },
+    {
+        "name": "Resin Default Home Page",
+        "dork": "intitle:\"Resin Default Home Page\"",
+        "description": "Finds Resin default home pages."
+    },
+    {
+        "name": "SOGo Webmail",
+        "dork": "intitle:\"SOGo\" site:webmail.*",
+        "description": "Finds SOGo webmail pages."
+    },
+    {
+        "name": "STEP by STIBO Systems",
+        "dork": "intitle:\"STEP by STIBO Systems\" \"Launch STEPworkbench\" \"Web UI Component Report\"",
+        "description": "Finds STEP by STIBO Systems pages."
+    },
+    {
+        "name": "Server Backup Manager SE",
+        "dork": "intitle:\"Server Backup Manager SE\"",
+        "description": "Finds Server Backup Manager SE pages."
+    },
+    {
+        "name": "Shoutcast Administrator",
+        "dork": "intitle:\"Shoutcast Administrator\"",
+        "description": "Finds Shoutcast administrator pages."
+    },
+    {
+        "name": "Shoutcast Server",
+        "dork": "intitle:\"Shoutcast server\" inurl:\"/index.html\" \"SHOUTcast Server\"",
+        "description": "Finds Shoutcast server pages."
+    },
+    {
+        "name": "Success Web Server",
+        "dork": "intitle:\"Success!\" intext:\"Your new web server is ready to use.\"",
+        "description": "Finds success web server pages."
+    },
+    {
+        "name": "Sucuri WebSite Firewall",
+        "dork": "intitle:\"Sucuri WebSite Firewall - Access Denied\"",
+        "description": "Finds Sucuri WebSite Firewall pages."
+    },
+    {
+        "name": "Test Page for Apache",
+        "dork": "intitle:\"Test Page for Apache\" \"It Worked!\" OR intitle:\"Test Page for Apache\" \"It Worked!\" \"on this web\"",
+        "description": "Finds Apache test pages."
+    },
+    {
+        "name": "Fedora Core Test Page",
+        "dork": "intitle:\"Test Page for the Apache HTTP Server on Fedora Core\" intext:\"Fedora Core Test Page\"",
+        "description": "Finds Fedora Core test pages."
+    },
+    {
+        "name": "Fedora HTTP Server Test Page",
+        "dork": "intitle:\"Test Page for the HTTP Server on Fedora\"",
+        "description": "Finds Fedora HTTP server test pages."
+    },
+    {
+        "name": "WAMPSERVER Homepage",
+        "dork": "intitle:\"WAMPSERVER homepage\" \"Server Configuration\" \"Apache Version\"",
+        "description": "Finds WAMPSERVER homepages."
+    },
+    {
+        "name": "WATASHI SERVICE",
+        "dork": "intitle:\"WATASHI SERVICE\"",
+        "description": "Finds WATASHI SERVICE pages."
+    },
+    {
+        "name": "Plesk Hosting Default Page",
+        "dork": "intitle:\"Web Server's Default Page\" intext:\"hosting using Plesk\" -www",
+        "description": "Finds Plesk hosting default pages."
+    },
+    {
+        "name": "Xitami Home Page",
+        "dork": "intitle:\"Welcome To Xitami\" -site:xitami.com",
+        "description": "Finds Xitami home pages."
+    },
+    {
+        "name": "WebSTAR Home Page",
+        "dork": "intitle:\"Welcome To Your WebSTAR Home Page\"",
+        "description": "Finds WebSTAR home pages."
+    },
+    {
+        "name": "602LAN SUITE",
+        "dork": "intitle:\"Welcome to 602LAN SUITE *\"",
+        "description": "Finds 602LAN SUITE pages."
+    },
+    {
+        "name": "IIS 4.0",
+        "dork": "intitle:\"Welcome to IIS 4.0\"",
+        "description": "Finds IIS 4.0 pages."
+    },
+    {
+        "name": "JBoss",
+        "dork": "intitle:\"Welcome to JBoss\"",
+        "description": "Finds JBoss pages."
+    },
+    {
+        "name": "OpenResty",
+        "dork": "intitle:\"Welcome to OpenResty!\"",
+        "description": "Finds OpenResty pages."
+    },
+    {
+        "name": "WildFly Administration Console",
+        "dork": "intitle:\"Welcome to WildFly\" intext:\"Administration Console\"",
+        "description": "Finds WildFly administration console pages."
+    },
+    {
+        "name": "Windows 2000 Internet Services",
+        "dork": "intitle:\"Welcome to Windows 2000 Internet Services\"",
+        "description": "Finds Windows 2000 Internet Services pages."
+    },
+    {
+        "name": "Windows Small Business Server 2003",
+        "dork": "intitle:\"Welcome to Windows Small Business Server 2003\"",
+        "description": "Finds Windows Small Business Server 2003 pages."
+    },
+    {
+        "name": "Debian New Home Page",
+        "dork": "intitle:\"Welcome to Your New Home Page!\" \"by the Debian release\"",
+        "description": "Finds Debian new home pages."
+    },
+    {
+        "name": "Nginx on Debian",
+        "dork": "intitle:\"Welcome to nginx!\" intext:\"Welcome to nginx on Debian!\" intext:\"Thank you for\"",
+        "description": "Finds Nginx on Debian pages."
+    },
+    {
+        "name": "Advanced Extranet Server",
+        "dork": "intitle:\"Welcome to the Advanced Extranet Server, ADVX!\"",
+        "description": "Finds Advanced Extranet Server pages."
+    },
+    {
+        "name": "LiteSpeed Technologies",
+        "dork": "intitle:\"Welcome\" intext:\"LiteSpeed Technologies, Inc. All Rights Reserved.\"",
+        "description": "Finds LiteSpeed Technologies pages."
+    },
+    {
+        "name": "Apache Tomcat Examples",
+        "dork": "intitle:\"apache tomcat/\" \"Apache Tomcat examples\"",
+        "description": "Finds Apache Tomcat example pages."
+    },
+    {
+        "name": "Apache Tomcat Configuration",
+        "dork": "intitle:\"apache tomcat/\" + \"Find additional important configuration information in:\"",
+        "description": "Finds Apache Tomcat configuration pages."
+    },
+    {
+        "name": "HTTP 404 Error RFC 2068",
+        "dork": "intitle:\"error 404\" \"From RFC 2068 \"",
+        "description": "Finds HTTP 404 error pages referencing RFC 2068."
+    },
+    {
+        "name": "Index of Homedir Etc",
+        "dork": "intitle:\"index of\" \"/homedir/etc/\"",
+        "description": "Finds index of /homedir/etc/ pages."
+    },
+    {
+        "name": "Sun-ONE Powered Index",
+        "dork": "intitle:\"index of\" \"Served by Sun-ONE\"",
+        "description": "Finds Sun-ONE powered index pages."
+    },
+    {
+        "name": "Docker YAML Files",
+        "dork": "intitle:\"index of\" \"docker.yml\"",
+        "description": "Finds Docker YAML files."
+    },
+    {
+        "name": "Apache Port 80 Index",
+        "dork": "intitle:\"index of\" \"powered by apache \" \"port 80\"",
+        "description": "Finds Apache port 80 index pages."
+    },
+    {
+        "name": "Server At Index",
+        "dork": "intitle:\"index of\" \"server at\"",
+        "description": "Finds server at index pages."
+    },
+    {
+        "name": "Magento Dev Index",
+        "dork": "intitle:\"index of\" AND inurl:magento AND inurl:/dev",
+        "description": "Finds Magento dev index pages."
+    },
+    {
+        "name": "Government Index Pages",
+        "dork": "intitle:\"index of\" site:.gov.in",
+        "description": "Finds government index pages."
+    },
+    {
+        "name": "miniProxy",
+        "dork": "intitle:\"miniProxy\"",
+        "description": "Finds miniProxy pages."
+    },
+    {
+        "name": "nPerfServer",
+        "dork": "intitle:\"nPerfServer\"",
+        "description": "Finds nPerfServer pages."
+    },
+    {
+        "name": "PHP Version",
+        "dork": "intitle:\"PHP Version\" intext:\"PHP Version\"",
+        "description": "Finds PHP version pages."
+    },
+    {
+        "name": "Web Server Login",
+        "dork": "intitle:\"web server login\" intext:\"site ip\"",
+        "description": "Finds web server login pages."
+    },
+    {
+        "name": "Mono XSP",
+        "dork": "intitle:\"welcome to mono xsp\"",
+        "description": "Finds Mono XSP pages."
+    },
+    {
+        "name": "AnswerBook2",
+        "dork": "intitle:AnswerBook2 inurl:ab2/ (inurl:8888 | inurl:8889)",
+        "description": "Finds AnswerBook2 pages."
+    },
+    {
+        "name": "CentOS HTTP Server Test Page",
+        "dork": "intitle:HTTP Server Test Page powered by CentOS",
+        "description": "Finds CentOS HTTP server test pages."
+    },
+    {
+        "name": "Snap.Server",
+        "dork": "intitle:Snap.Server inurl:Func=",
+        "description": "Finds Snap.Server pages."
+    },
+    {
+        "name": "Snoop Servlet",
+        "dork": "intitle:Snoop Servlet",
+        "description": "Finds Snoop Servlet pages."
+    },
+    {
+        "name": "Nginx HTTP Server Test Page",
+        "dork": "intitle:Test Page for the Nginx HTTP Server on Fedora",
+        "description": "Finds Nginx HTTP server test pages."
+    },
+    {
+        "name": "LiveZilla Server Time",
+        "dork": "intitle:livezilla \"Server Time\"",
+        "description": "Finds LiveZilla server time pages."
+    },
+    {
+        "name": "Login Pages on Port 8080",
+        "dork": "inurl *:8080/login.php",
+        "description": "Finds login pages on port 8080."
+    },
+    {
+        "name": "Office FTP",
+        "dork": "inurl: /ftp intitle:\"office\"",
+        "description": "Finds office FTP pages."
+    },
+    {
+        "name": "Kibana Dashboard",
+        "dork": "inurl:\"/app/kibana#\"",
+        "description": "Finds Kibana dashboard pages."
+    },
+    {
+        "name": "Domino Web Server Configuration",
+        "dork": "inurl:\"/domcfg.nsf\" \" Web Server Configuration\"",
+        "description": "Finds Domino web server configuration pages."
+    },
+    {
+        "name": "phpMyAdmin User Password",
+        "dork": "inurl:\"/phpmyadmin/user_password.php\"",
+        "description": "Finds phpMyAdmin user password pages."
+    },
+    {
+        "name": "Administration Console",
+        "dork": "inurl:\"/web-console/\" intitle:\"Administration Console\"",
+        "description": "Finds administration console pages."
+    },
+    {
+        "name": "Cluster Apps",
+        "dork": "inurl:\":8088/cluster/apps\"",
+        "description": "Finds cluster apps pages."
+    },
+    {
+        "name": "WebPortal Bank ID",
+        "dork": "inurl:\"WebPortal?bankid\"",
+        "description": "Finds WebPortal bank ID pages."
+    },
+    {
+        "name": "MySQL Fetch Array Warning",
+        "dork": "inurl:\"id=*\" & intext:\"warning mysql_fetch_array()\"",
+        "description": "Finds MySQL fetch array warnings."
+    },
+    {
+        "name": "Apache Server Status",
+        "dork": "inurl:\"server-status\" \"Server Version: Apache/\" \"Server Built: \" \"Server uptime:\" \"Total accesses\" \"CPU Usage:\"",
+        "description": "Finds Apache server status pages."
+    },
+    {
+        "name": "Database Selector",
+        "dork": "inurl:\"web/database/selector\"",
+        "description": "Finds database selector pages."
+    },
+    {
+        "name": "Portal0000.htm",
+        "dork": "inurl:/Portal0000.htm",
+        "description": "Finds Portal0000.htm pages."
+    },
+    {
+        "name": "SharePoint Catalogs",
+        "dork": "inurl:/_catalogs",
+        "description": "Finds SharePoint catalogs."
+    },
+    {
+        "name": "HCMS",
+        "dork": "inurl:/_hcms/",
+        "description": "Finds HCMS pages."
+    },
+    {
+        "name": "Device Configuration",
+        "dork": "inurl:/config/device/wcd",
+        "description": "Finds device configuration pages."
+    },
+    {
+        "name": "IIS7 Start Page",
+        "dork": "inurl:/iisstart.htm intitle:\"IIS7\"",
+        "description": "Finds IIS7 start pages."
+    },
+    {
+        "name": "Java Faces Resource",
+        "dork": "inurl:/javax.faces.resource/",
+        "description": "Finds Java Faces resource pages."
+    },
+    {
+        "name": "PHP Info",
+        "dork": "inurl:/php/info.php",
+        "description": "Finds PHP info pages."
+    },
+    {
+        "name": "phpPgAdmin Browser",
+        "dork": "inurl:/phpPgAdmin/browser.php",
+        "description": "Finds phpPgAdmin browser pages."
+    },
+    {
+        "name": "phpMyAdmin Changelog",
+        "dork": "inurl:/phpmyadmin/changelog.php -github -gitlab",
+        "description": "Finds phpMyAdmin changelog pages."
+    },
+    {
+        "name": "Public Resources",
+        "dork": "inurl:/pub/ inurl:_ri_",
+        "description": "Finds public resources."
+    },
+    {
+        "name": "Apache MPM",
+        "dork": "inurl:/server-status + \"Server MPM:\"",
+        "description": "Finds Apache MPM pages."
+    },
+    {
+        "name": "AffWP Debug Log",
+        "dork": "inurl:/uploads/affwp-debug.log",
+        "description": "Finds AffWP debug logs."
+    },
+    {
+        "name": "Xprober PHP",
+        "dork": "inurl:/xprober ext:php",
+        "description": "Finds Xprober PHP pages."
+    },
+    {
+        "name": "Jana Admin",
+        "dork": "inurl:2506/jana-admin",
+        "description": "Finds Jana Admin pages."
+    },
+    {
+        "name": "XDEBUG Session Start",
+        "dork": "inurl:?XDEBUG_SESSION_START=phpstorm",
+        "description": "Finds XDEBUG session start pages."
+    },
+    {
+        "name": "CFIDE Admin API",
+        "dork": "inurl:CFIDE/adminapi",
+        "description": "Finds CFIDE admin API pages."
+    },
+    {
+        "name": "Organization Chart",
+        "dork": "inurl:OrganizationChart.cc",
+        "description": "Finds organization chart pages."
+    },
+    {
+        "name": "Authentication ASMX",
+        "dork": "inurl:_vti_bin/Authentication.asmx",
+        "description": "Finds authentication ASMX pages."
+    },
+    {
+        "name": "CodeIgniter Composer",
+        "dork": "inurl:composer.json codeigniter -site:github.com",
+        "description": "Finds CodeIgniter composer pages."
+    },
+    {
+        "name": "Domino Configuration",
+        "dork": "inurl:domcfg.nsf",
+        "description": "Finds Domino configuration pages."
+    },
+    {
+        "name": "JSmol PHP",
+        "dork": "inurl:jsmol.php",
+        "description": "Finds JSmol PHP pages."
+    },
+    {
+        "name": "NNLS Brand Nav",
+        "dork": "inurl:nnls_brand.html OR inurl:nnls_nav.html",
+        "description": "Finds NNLS brand/nav pages."
+    },
+    {
+        "name": "ORAWeb",
+        "dork": "inurl:oraweb -site:oraweb.org",
+        "description": "Finds ORAWeb pages."
+    },
+    {
+        "name": "PHP Info Build 2600",
+        "dork": "inurl:phpinfo.php intext:build 2600",
+        "description": "Finds PHP info build 2600 pages."
+    },
+    {
+        "name": "phpMyAdmin Themes",
+        "dork": "inurl:phpmyadmin/themes intext:\"pmahomme\"",
+        "description": "Finds phpMyAdmin themes pages."
+    },
+    {
+        "name": "phpSysInfo",
+        "dork": "inurl:phpsysinfo/index.php?disp=dynamic",
+        "description": "Finds phpSysInfo pages."
+    },
+    {
+        "name": "Laravel Readme",
+        "dork": "inurl:readme.md intext:\"Laravel\"",
+        "description": "Finds Laravel readme pages."
+    },
+    {
+        "name": "TYPO3 Readme",
+        "dork": "inurl:readme.md intext:\"typo3\"",
+        "description": "Finds TYPO3 readme pages."
+    },
+    {
+        "name": "CodeIgniter Readme",
+        "dork": "inurl:readme.rst intext:\"CodeIgniter\"",
+        "description": "Finds CodeIgniter readme pages."
+    },
+    {
+        "name": "RVSiteBuilder",
+        "dork": "inurl:rvsindex.php & /rvsindex.php?/user/login",
+        "description": "Finds RVSiteBuilder pages."
+    },
+    {
+        "name": "Cisco Tech Support",
+        "dork": "inurl:tech-support inurl:show Cisco",
+        "description": "Finds Cisco tech support pages."
+    },
+    {
+        "name": "Autoloader Tests",
+        "dork": "inurl:tests/mocks intext:autoloader",
+        "description": "Finds autoloader tests."
+    },
+    {
+        "name": "CodeIgniter User Guide",
+        "dork": "inurl:user_guide intext:\"CodeIgniter User Guide\"",
+        "description": "Finds CodeIgniter user guide pages."
+    },
+    {
+        "name": "WL Executable",
+        "dork": "inurl:wl.exe inurl:?SS1= intext:\"Operating system:\" -edu -gov -mil",
+        "description": "Finds WL executable pages."
+    },
+    {
+        "name": "SED Webserver",
+        "dork": "sEDWebserver * server +at intitle:index.of",
+        "description": "Finds SED Webserver pages."
+    },
+    {
+        "name": "ASP Pages",
+        "dork": "site:*/*.asp",
+        "description": "Finds ASP pages."
+    },
+    {
+        "name": "Apache Server Status",
+        "dork": "site:*/server-status intext:\"Apache server status for\"",
+        "description": "Finds Apache server status pages."
+    },
+    {
+        "name": "FTP Web File Manager",
+        "dork": "site:ftp.*.com \"Web File Manager\"",
+        "description": "Finds FTP web file managers."
+    },
+    {
+        "name": "OVH VPS",
+        "dork": "site:vps-*.vps.ovh.net",
+        "description": "Finds OVH VPS pages."
+    },
+    {
+        "name": "Yaws Server",
+        "dork": "yaws.*.server.at",
+        "description": "Finds Yaws server pages."
+    },
+    {
+        "name": "Debian Configuration Files",
+        "dork": "intitle:\"index of\" \"debian.cnf\" OR intitle:\"index of\" \"debian.conf\"",
+        "description": "Finds Debian configuration files."
+    }
+
+]
+
