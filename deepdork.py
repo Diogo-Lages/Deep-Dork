@@ -18,7 +18,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service as ChromeService
 
-# Initialize colorama for colored terminal output
+
 init(autoreset=True)
 
 class GoogleDorkSearch:
@@ -61,14 +61,12 @@ class GoogleDorkSearch:
         return False
 
     def load_proxies_from_file_menu(self):
-        """Menu option to load proxies from a file."""
         filename = input(f"{Fore.GREEN}Enter the filename containing proxies (e.g., proxies.txt): ").strip()
         self.dork_search.load_proxies_from_file(filename)
         self.show_menu()
 
 
     def load_proxies_from_file(self, filename: str):
-        """Load proxies from a text file and validate them."""
         try:
             with open(filename, "r", encoding="utf-8") as f:
                 proxy_list = [line.strip() for line in f if line.strip()]
@@ -78,7 +76,6 @@ class GoogleDorkSearch:
             print(f"{Fore.RED}⚠ Proxy file '{filename}' not found.")
 
     def validate_and_test_proxies(self, proxy_list: List[str]):
-        """Validate proxies, check their type, and measure response time."""
         valid_proxies = []
         threads = []
 
@@ -98,7 +95,6 @@ class GoogleDorkSearch:
             print(f"{Fore.RED}⚠ No valid proxies found.")
 
     def _validate_and_test_proxy_thread(self, proxy: str, valid_proxies: list):
-        """Thread worker to validate and test a single proxy."""
         proxy_type = self.detect_proxy_type(proxy)
         if not proxy_type:
             print(f"{Fore.RED}⚠ Skipping malformed proxy: {proxy}")
@@ -115,7 +111,6 @@ class GoogleDorkSearch:
             print(f"{Fore.RED}✗ Proxy {proxy} failed validation.")
 
     def detect_proxy_type(self, proxy: str) -> str:
-        """Detect the type of proxy (SOCKS5, SOCKS4, HTTP)."""
         if "socks5" in proxy.lower():
             return "socks5"
         elif "socks4" in proxy.lower():
