@@ -46,8 +46,8 @@ Additionally, you need to have [ChromeDriver](https://sites.google.com/a/chromiu
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/Diogo-Lages/deep-dork.git
-   cd deep-dork
+   git clone https://github.com/Diogo-Lages/Deep-Dork.git
+   cd Deep-Dork
    ```
 
 2. **Install Dependencies**:
